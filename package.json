@@ -1,0 +1,19 @@
+{
+  "name": "proba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobpulaski/proba.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bobpulaski/proba/issues"
+  },
+  "homepage": "https://github.com/bobpulaski/proba#readme"
+}
