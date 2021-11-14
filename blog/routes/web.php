@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('add_organization_form');
+})->name('home');
+
+
+Route::post('organization/add', 'App\Http\Controllers\AddOrganizationController@add')
+    ->name('organization.add');
