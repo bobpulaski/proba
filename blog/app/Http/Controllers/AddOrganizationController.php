@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class AddOrganizationController extends Controller
 {
-    function add1(Request $request){
+    function add(Request $request){
 
         $this->validate($request, [
             'name' => 'required|max:255',
