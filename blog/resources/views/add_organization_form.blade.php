@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="flex flex-col space-y-1">
-                        <label for="e-mail">ИНН</label>
+                        <label for="inn">ИНН</label>
                         <input type="text" name="inn" id="inn" class="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow" placeholder="ИНН" />
                     </div>
 

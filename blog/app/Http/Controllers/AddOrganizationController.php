@@ -15,7 +15,7 @@ class AddOrganizationController extends Controller
 
         $name = $request->input('name');
         $inn = $request->input('inn');
-        dd($name);
+        dd($name, $inn);
     }
 
 }
