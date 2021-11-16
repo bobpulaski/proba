@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('index');
+})->name('index');
+
+Route::get('addform', function () {
     return view('add_organization_form');
-})->name('home');
+})->name('addform');
 
 
 Route::post('organization/add', 'App\Http\Controllers\AddOrganizationController@add')
