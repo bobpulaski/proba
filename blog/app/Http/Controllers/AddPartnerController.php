@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Organizations;
+use App\Models\Partners;
 
-class AddOrganizationController extends Controller
+class AddPartnerController extends Controller
 {
     function add(Request $request)
     {
@@ -16,10 +16,12 @@ class AddOrganizationController extends Controller
             'inn' => 'required',
         ]);
 
-        $Organization = new Organizations;
-        $Organization->name = $request->input('name');
-        $Organization->inn = $request->input('inn');
-        $Organization->save();
+        $Partner = new Partners;
+        $Partner->name = $request->input('name');
+        $Partner->inn = $request->input('inn');
+        $Partner->save();
+        //return redirect('partners')->with('success','Item created successfully!');
+        return back()->with('success','Item created successfully!');
 
         //dd($name, $inn);
         //DB::insert('insert into organizations (name, inn) values (?, ?)', [$name, $inn]);

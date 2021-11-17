@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @php
-  $title = 'Главная';
+    $title = 'Счета';
 @endphp
 
 @section('title')
@@ -9,5 +9,5 @@
 @endsection
 
 @section('content')
-    <h1>Главная</h1>
+    <h1>Счета</h1>
 @endsection
