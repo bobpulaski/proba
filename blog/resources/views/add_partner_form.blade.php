@@ -1,7 +1,9 @@
 @extends('templates.main')
 
+@section('title')Добавление контрагента@endsection
+
 @section('content')
-    <h1>Добавить контрагента</h1>
+    <h1>@yield('title')</h1>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success" role="alert">

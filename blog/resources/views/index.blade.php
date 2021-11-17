@@ -1,12 +1,6 @@
 @extends('templates.main')
 
-@php
-  $title = 'Главная';
-@endphp
-
-@section('title')
-    {{$title}}
-@endsection
+@section('title')Главная@endsection
 
 @section('content')
     <h1>Главная</h1>
