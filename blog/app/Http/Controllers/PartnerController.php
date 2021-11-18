@@ -13,10 +13,12 @@ class PartnerController extends Controller
         //return('k');
 
         //foreach (Partners::where('name', 'ООО Ромашка')->get()->sortBy('inn') as $Partner) {
-        $Partner = new Partners;
-            //echo $Partner->name;
+        $Partner = Partners::simplePaginate(10);
+             //echo $Partner->name;
             //echo $Partner->inn;
-            return view('partners', ['data' => $Partner->all()->sortBy('name')]);
+            //return view('partners', ['data' => $Partner->sortBy('id')]);
+        return view('partners', compact('Partner'));
+
         }
 
 

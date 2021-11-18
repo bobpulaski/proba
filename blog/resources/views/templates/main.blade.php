@@ -43,6 +43,8 @@
         <div id="header" class="d-flex justify-content-end border-bottom bg-white p-3 shadow-sm p-3 bg-body">
             <div class="bd-highlight">
                 <a href="#">Выйти</a>
+                <x-button type="danger" message="Красная"/>
+                <x-button type="info" message="Инфо"/>
             </div>
         </div>
 
