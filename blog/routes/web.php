@@ -33,6 +33,16 @@ Route::get('addform', function () {
     return view('add_partner_form');
 })->name('addform');
 
+Route::get('partner/edit/{id}', function () {
+    return view('edit_partner_form');
+})->name('partner.edit');
 
-Route::post('partner/add', 'App\Http\Controllers\AddPartnerController@add')
+Route::get('confirmation/{id}', 'App\Http\Controllers\ConfirmationController@confirmation')
+->name('confirmation');
+
+
+Route::post('partner/add', 'App\Http\Controllers\PartnerController@add')
     ->name('partner.add');
+
+Route::delete('partner/delete/{id}', 'App\Http\Controllers\PartnerController@delete')
+    ->name('partner.delete');

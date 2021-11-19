@@ -15,7 +15,7 @@
         @csrf
             <div>
                 <label for="e-mail">Наименование</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" name="org" id="org" />
             </div>
 
             <div>

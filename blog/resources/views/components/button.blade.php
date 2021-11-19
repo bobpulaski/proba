@@ -1,1 +1,1 @@
-<button type="button" class="btn btn-{{ $type }}">{{ $message }}</button>
+<button type="submit" class="btn btn-{{ $style }}">{{ $message }}</button>

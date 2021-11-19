@@ -27,12 +27,14 @@
                         <td>{{ $el->id }}</td>
                         <td>{{ $el->name }}</td>
                         <td>{{ $el->inn }}</td>
-                        <td><x-button type="danger" message="Удалить"/></td>
+                        <td><a href="confirmation/{{ $el->id }}">Удалить</a></td>
+                        <td><a href="partner/edit/{{ $el->id }}">Изменить</a></td>
                     </tr>
                 @endforeach
             @else
                 <tr>
                     <td colspan="10">There are no data.</td>
+
                 </tr>
             @endif
         </tbody>
