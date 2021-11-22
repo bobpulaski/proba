@@ -15,9 +15,9 @@
         <thead>
         <tr>
             <th>#ID</th>
-            <th>#Name</th>
+            <th>#name</th>
             <th>#inn</th>
-            <th>#Action</th>
+            <th>#action</th>
         </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
                         <td>{{ $el->name }}</td>
                         <td>{{ $el->inn }}</td>
                         <td><a href="confirmation/{{ $el->id }}">Удалить</a></td>
-                        <td><a href="partner/edit/{{ $el->id }}">Изменить</a></td>
+                        <td><a href="partner/edit-form/{{ $el->id }}">Изменить</a></td>
                     </tr>
                 @endforeach
             @else

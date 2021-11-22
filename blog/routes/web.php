@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +35,8 @@ Route::get('addform', function () {
     return view('add_partner_form');
 })->name('addform');
 
-Route::get('partner/edit/{id}', function () {
-    return view('edit_partner_form');
-})->name('partner.edit');
+Route::get('partner/edit-form/{id}', 'App\Http\Controllers\PartnerController@editform')
+    ->name('partner.editform');
 
 Route::get('confirmation/{id}', 'App\Http\Controllers\ConfirmationController@confirmation')
 ->name('confirmation');
@@ -44,5 +45,13 @@ Route::get('confirmation/{id}', 'App\Http\Controllers\ConfirmationController@con
 Route::post('partner/add', 'App\Http\Controllers\PartnerController@add')
     ->name('partner.add');
 
+Route::put('partner/edit/{id}', 'App\Http\Controllers\PartnerController@edit')
+    ->name('partner.edit');
+
 Route::delete('partner/delete/{id}', 'App\Http\Controllers\PartnerController@delete')
     ->name('partner.delete');
+
+/*Route::get('invoices/download', 'App\Http\Controllers\PDFController@download');*/
+
+Route::get('pdf/preview', 'App\Http\Controllers\PDFController@preview')->name('pdf.preview');
+Route::get('pdf/generate', 'App\Http\Controllers\PDFController@generatePDF')->name('pdf.generate');

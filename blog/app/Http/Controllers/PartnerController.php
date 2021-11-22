@@ -14,7 +14,7 @@ class PartnerController extends Controller
         //return('k');
 
         //foreach (Partners::where('name', 'ООО Ромашка')->get()->sortBy('inn') as $Partner) {
-        $Partner = Partners::simplePaginate(10);
+        $Partner = Partners::simplePaginate(3);
         //echo $Partner->name;
         //echo $Partner->inn;
         //return view('partners', ['data' => $Partner->sortBy('id')]);
@@ -40,11 +40,31 @@ class PartnerController extends Controller
         //DB::insert('insert into organizations (name, inn) values (?, ?)', [$name, $inn]);
     }
 
-    function delete($id)
+    public function delete($id)
     {
         Partners::find($id)->delete();
         return redirect('partners')->with('success', 'Контрагент удален.');
 
 
     }
+
+    public function editform($id)
+    {
+        $currentRecord = Partners::where ('id', $id)->get();
+        return view ('edit_partner_form', compact ('currentRecord'));
+    }
+
+    public function edit(Request $request, $id='')
+    {
+        $Partner = Partners::find ($id);
+        if ($request->isMethod ('put'))
+        {
+            $Partner->name = $request->input('name');
+            $Partner->inn = $request->input('inn');
+            $Partner->save();
+        }
+
+        return redirect ('partners');
+    }
 }
+
