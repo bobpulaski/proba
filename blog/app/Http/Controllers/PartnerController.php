@@ -2,27 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Partners;
+use Illuminate\Http\Request;
+
 
 class PartnerController extends Controller
 {
-    //Partners list
-    public function partner_list()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        //return('k');
-
-        //foreach (Partners::where('name', 'ООО Ромашка')->get()->sortBy('inn') as $Partner) {
-        $Partner = Partners::simplePaginate(3);
-        //echo $Partner->name;
-        //echo $Partner->inn;
-        //return view('partners', ['data' => $Partner->sortBy('id')]);
-        return view('partners', compact('Partner'));
-
+        $Partner = Partners::simplePaginate(30);
+        return view('partners.index', compact('Partner'));
     }
 
-    public function add(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('partners.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         $this->validate($request, [
             'org' => 'required|max:255',
@@ -33,28 +46,41 @@ class PartnerController extends Controller
         $Partner->name = $request->input('org');
         $Partner->inn = $request->input('inn');
         $Partner->save();
-        //return redirect('partners')->with('success','Item created successfully!');
-        return back()->with('success', 'Контрагент добавлен.');
-
-        //dd($name, $inn);
-        //DB::insert('insert into organizations (name, inn) values (?, ?)', [$name, $inn]);
+        return redirect('partners')->with('success', 'Контрагент ' . $Partner->name. ' добавлен.');
+        //return back()->with('success', 'Контрагент добавлен.');
     }
 
-    public function delete($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        Partners::find($id)->delete();
-        return redirect('partners')->with('success', 'Контрагент удален.');
-
 
     }
 
-    public function editform($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         $currentRecord = Partners::where ('id', $id)->get();
-        return view ('edit_partner_form', compact ('currentRecord'));
+        return view ('partners.edit', compact ('currentRecord'));
     }
 
-    public function edit(Request $request, $id='')
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
         $Partner = Partners::find ($id);
         if ($request->isMethod ('put'))
@@ -63,8 +89,18 @@ class PartnerController extends Controller
             $Partner->inn = $request->input('inn');
             $Partner->save();
         }
-
         return redirect ('partners');
     }
-}
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Partners::find($id)->delete();
+        return redirect('partners')->with('success', 'Контрагент ' . $Partner->name. ' удален.');
+    }
+}

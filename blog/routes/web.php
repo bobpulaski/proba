@@ -22,18 +22,37 @@ Route::get('/', function () {
 /*Route::get('partners', function () {
     return view('partners');
 })>name('partners');*/
+/*Route::name('partners')->group(function () {
 
-Route::get('partners', 'App\Http\Controllers\PartnerController@partner_list')
-    ->name('partners');
+});*/
+
+Route::get('partners', 'App\Http\Controllers\PartnerController@index')
+    ->name('partners.index');
+
+Route::get('partners/create', 'App\Http\Controllers\PartnerController@create')
+    ->name('partners.create');
+
+Route::post('partners/store', 'App\Http\Controllers\PartnerController@store')
+    ->name('partners.store');
+
+/*Route::get('partners/{id}', 'App\Http\Controllers\PartnerController@show')
+    ->name('partners.show');*/
+
+Route::get('partners/{id}/edit', 'App\Http\Controllers\PartnerController@edit')
+    ->name('partners.edit');
+
+Route::put('partners/{id}', 'App\Http\Controllers\PartnerController@update')
+    ->name('partners.update');
+
+Route::delete('partners/{id}', 'App\Http\Controllers\PartnerController@destroy')
+    ->name('partners.destroy');
 
 
 Route::get('invoices', function () {
     return view('invoices');
 })->name('invoices');
 
-Route::get('addform', function () {
-    return view('add_partner_form');
-})->name('addform');
+
 
 Route::get('partner/edit-form/{id}', 'App\Http\Controllers\PartnerController@editform')
     ->name('partner.editform');

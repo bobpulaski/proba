@@ -10,7 +10,7 @@
 
 @section('content')
     <h1>Форма редактирования контрагента</h1>
-    <form action="../edit/{{ $currentRecord[0]->id }}" method="post">
+    <form action="{{ route('partners.update' , [$currentRecord[0]->id]) }}" method="post">
         @csrf
         @method('put')
         <input type="text" name="id" value="{{ $currentRecord[0]->id }}">

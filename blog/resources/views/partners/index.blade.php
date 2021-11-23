@@ -11,6 +11,12 @@
 @section('content')
     <h1>Контрагенты</h1>
 
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
+
     <table class="table">
         <thead>
         <tr>
@@ -28,7 +34,7 @@
                         <td>{{ $el->name }}</td>
                         <td>{{ $el->inn }}</td>
                         <td><a href="confirmation/{{ $el->id }}">Удалить</a></td>
-                        <td><a href="partner/edit-form/{{ $el->id }}">Изменить</a></td>
+                        <td><a href="{{ route('partners.edit' , [$el->id]) }}">Изменить</a></td>
                     </tr>
                 @endforeach
             @else

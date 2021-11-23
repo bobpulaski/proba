@@ -1,6 +1,6 @@
 @extends('templates.main')
 
-@section('title')Добавление контрагента@endsection
+@section('title')Форма добавления контрагента@endsection
 
 @section('content')
     <h1>@yield('title')</h1>
@@ -11,8 +11,9 @@
         </div>
     @endif
 
-    <form action="{{ route('partner.add') }}" method="post">
+    <form action="{{ route('partners.store') }}" method="post">
         @csrf
+        @method('POST')
             <div>
                 <label for="e-mail">Наименование</label>
                 <input type="text" name="org" id="org" />

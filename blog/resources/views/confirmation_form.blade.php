@@ -11,7 +11,7 @@
 @section('content')
     <h1>Подвтверждение действия</h1>
     <h3>{{$id}}</h3>
-    <form method="post" action="../partner/delete/{{$id}}">
+    <form method="post" action="{{ route('partners.destroy' , [$id]) }}">
         @method('delete')
         @csrf
         <x-button type="submit" style="danger" message="Удалить" />
